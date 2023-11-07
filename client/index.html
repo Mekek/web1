@@ -1,0 +1,247 @@
+
+<html lang="en">
+<head>
+  <title>lab1 Web</title>
+  <style>
+    @import url('https://fonts.cdnfonts.com/css/palatino');
+
+    :root {
+      font-family: "fantasy", "Helvetica";
+      color-scheme: dark;
+      background-image: url('images/bg.png');
+      background-size: cover;
+      background-attachment: fixed;
+      background-image: url("images/background.jpg");
+    }
+
+    .info {
+      font-size: 30px;
+      font-weight: 100;
+      text-align: center;
+    }
+
+    .graph {
+      text-align: center;
+    }
+
+    form table {
+      border-spacing: 10px;
+      border-collapse: separate;
+      border: none;
+    }
+
+    td.check-btn {
+      text-align: center;
+    }
+
+    .resultTable {
+      border: 1px solid #ffffff; 
+    }
+
+    .resultTable th {
+      border: 1px solid #ffffff; 
+    }
+
+    td.resultTableWrapper {
+      text-align: center;
+      vertical-align: top;
+    }
+
+    input[type="submit"] {
+      padding: 0.5em 1em;
+      border-radius: 4px;
+      background-color: #ffffff;
+      color: rgb(0, 0, 0);
+      border: none;
+      cursor: pointer;
+    }
+    
+    #date-time {
+      text-align: center;
+    }
+
+    .result-cell-in{
+      color: green;
+    }
+
+    .result-cell-out{
+      color: red;
+    }
+
+  </style>
+</head>
+<body>
+
+
+  <table style="width: 100%; height: 100%; border-collapse: collapse;">
+    <tr style="height: 15%;">
+      <th class="info" style="padding: 1%;" colspan="2">Kadilov Mikhail Vladimirovich, P3231, 1205</th>
+    </tr>
+    <tr style="height: 5%;">
+      <td id="date-time" colspan="2">
+        <span id="date"></span>, <span id="time"></span>
+      </td>
+    </tr>
+
+
+    <tr style="height: 45%;">
+      <td class="form" id="input-form" style="padding: 2%; width: 55%;">
+        <form>
+          <table style="width: 100%; height: 100%;">
+            <tr>
+              <td style="padding: 1%;">X</td>
+              <td style="padding: 1%;">
+                  <div id="x" class="radio-group">
+                          <label><input type="radio" name="x" value="-2">-2</label>
+                          <label><input type="radio" name="x" value="-1.5">-1.5</label>
+                          <label><input type="radio" name="x" value="-1">-1</label>
+                          <label><input type="radio" name="x" value="-0.5">-0.5</label>
+                          <label><input type="radio" name="x" value="0">0</label>
+                          <label><input type="radio" name="x" value="0.5">0.5</label>
+                          <label><input type="radio" name="x" value="1">1</label>
+                          <label><input type="radio" name="x" value="1.5">1.5</label>
+                          <label><input type="radio" name="x" value="2">2</label>
+                  </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 1%;">Y</td>
+              <td style="padding: 1%;">
+                  <input type="text" id="y" name="y" maxlength="8">
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 1%;">R</td>
+              <td style="padding: 1%;">
+          
+                    <input type="checkbox" id="option1" name="r" value="1" onclick="handleCheckboxClick(this)">
+                    <label for="option1">1</label><br>
+          
+                    <input type="checkbox" id="option2" name="r" value="2" onclick="handleCheckboxClick(this)">
+                    <label for="option2">2</label><br>
+          
+                    <input type="checkbox" id="option3" name="r" value="3" onclick="handleCheckboxClick(this)">
+                    <label for="option3">3</label><br>
+          
+                    <input type="checkbox" id="option4" name="r" value="4" onclick="handleCheckboxClick(this)">
+                    <label for="option4">4</label><br>
+          
+                    <input type="checkbox" id="option5" name="r" value="5" onclick="handleCheckboxClick(this)">
+                    <label for="option5">5</label><br>
+          
+                    <script>
+                      function handleCheckboxClick(checkbox) {
+                        var checkboxes = document.getElementsByName('r');
+                        
+                        // Перебираем все флажки
+                        for (var i = 0; i < checkboxes.length; i++) {
+                          // Если текущий флажок не совпадает с выбранным флажком
+                          if (checkboxes[i] !== checkbox) {
+                            // Сбрасываем его состояние
+                            checkboxes[i].checked = false;
+                          }
+                        }
+                      }
+                    </script>
+              </td>
+            </tr>
+            <tr>
+              <td class="check-btn" style="padding: 1%;" colspan="2">
+                  <input type="submit" value="Check">
+              </td>
+            </tr>
+          </table>
+        </form>
+      </td>
+
+
+      
+      <td style="padding: 1%; text-align: center;">
+          <svg class="graph" height="300" width="300" xmlns="http://www.w3.org/2000/svg">
+
+              <!-- Оси со стрелками -->
+              <line stroke="white" x1="0" x2="300" y1="150" y2="150" />
+              <line stroke="white" x1="150" x2="150" y1="0" y2="300" />
+              <polygon fill="white" points="150,0 144,15 156,15" stroke="white" />
+              <polygon fill="white" points="300,150 285,156 285,144" stroke="white" />
+
+              <!-- Засечки -->
+              <line stroke="white" x1="200" x2="200" y1="155" y2="145" />
+              <line stroke="white" x1="250" x2="250" y1="155" y2="145" />
+
+              <line stroke="white" x1="50" x2="50" y1="155" y2="145" />
+              <line stroke="white" x1="100" x2="100" y1="155" y2="145" />
+
+              <line stroke="white" x1="145" x2="155" y1="100" y2="100" />
+              <line stroke="white" x1="145" x2="155" y1="50" y2="50" />
+
+              <line stroke="white" x1="145" x2="155" y1="200" y2="200" />
+              <line stroke="white" x1="145" x2="155" y1="250" y2="250" />
+
+              <!-- Подписи к засечкам    -->
+              <text fill="white" x="195" y="170">R/2</text>
+              <text fill="white" x="248" y="170">R</text>
+
+              <text fill="white" x="40" y="170">-R</text>
+              <text fill="white" x="90" y="170">-R/2</text>
+
+              <text fill="white" x="120" y="105">R/2</text>
+              <text fill="white" x="130" y="55">R</text>
+
+              <text fill="white" x="120" y="205">-R/2</text>
+              <text fill="white" x="130" y="255">-R</text>
+
+              <text fill="white" x="160" y="10">Y</text>
+              <text fill="white" x="290" y="140">X</text>
+
+              <!-- Прямоугольник (справа сверху) -->
+              <rect x="150" y="50" width="100" height="100" fill="white" fill-opacity="0.1" stroke="white" />
+
+              <!-- Треугольник (слева сверху) -->
+              <polygon fill="white" fill-opacity="0.1" points="150,100 150,150 100,150" stroke="white" />
+
+              <!-- Полукруг (спарвва снизу) -->
+              <path d="M 250 150 A 100 100, 0, 0, 1, 150 250 L 150 150 Z" fill="white" fill-opacity="0.1"
+                  stroke="white" />
+
+              <!-- Центр оси координат -->
+              <circle cx="150" cy="150" id="target-dot" r="0" stroke="white" fill="white"></circle>
+          </svg>
+      </td>
+    </tr>
+
+
+
+    <tr>
+      <td class="resultTableWrapper" style="padding: 1%;" colspan="2">
+        <table class="resultTable">
+          <thead>
+            <tr>
+              <th>x</th>
+              <th>y</th>
+              <th>r</th>
+              <th>target hit or not</th>
+              <th>current time</th>
+              <th>duration of script.php running</th>
+            </tr>
+          </thead>
+          <tbody id="output">
+            <!-- The rows here will be populated by JavaScript -->
+            <tr>
+              <td>Data for x</td>
+              <td>Data for y</td>
+              <td>Data for R</td>
+              <td>Data for hit or not</td>
+              <td>Data for current time</td>
+              <td>Data for duration</td>
+            </tr>
+          </tbody>
+        </table>    
+      </td>
+    </tr>
+  </table>
+
+  <script type="module" src="main.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</body>
+</html>
